@@ -1,0 +1,22 @@
+# Android Studio / IntelliJ
+.idea/
+*.iml
+*.iws
+*.ipr
+.DS_Store
+
+# Build outputs (nunca commitar isso)
+build/
+app/build/
+*/build/
+
+# Gradle cache
+.gradle/
+local.properties
+
+# Keystore (segurança)
+*.jks
+*.keystore
+
+# NDK
+obj/
