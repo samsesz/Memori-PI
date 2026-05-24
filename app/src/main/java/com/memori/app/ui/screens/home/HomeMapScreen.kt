@@ -33,6 +33,7 @@ import androidx.compose.ui.viewinterop.AndroidView
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleEventObserver
+import com.memori.app.R
 import com.memori.app.ui.theme.RedPrimary
 import org.osmdroid.config.Configuration
 import org.osmdroid.tileprovider.tilesource.TileSourceFactory
@@ -47,7 +48,7 @@ fun HomeMapScreen(onNavigateToProfile: () -> Unit) {
     val context = LocalContext.current
     val lifecycleOwner = LocalLifecycleOwner.current
     
-    val kkkkLocation = remember { GeoPoint(-24.4935, -47.8447) }
+    val kkkkLocation = remember { GeoPoint(-24.486862, -47.840627) }
     val mapView = remember { MapView(context) }
 
     LaunchedEffect(Unit) {
@@ -97,6 +98,7 @@ fun HomeMapScreen(onNavigateToProfile: () -> Unit) {
 
                 val marker = Marker(view)
                 marker.position = kkkkLocation
+                marker.icon = ContextCompat.getDrawable(context, R.drawable.guaracui)
                 marker.setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_CENTER)
                 marker.setOnMarkerClickListener { _, _ ->
                     // Marcador clicado

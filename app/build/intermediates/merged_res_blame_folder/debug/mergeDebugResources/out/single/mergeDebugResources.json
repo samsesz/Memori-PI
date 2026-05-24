@@ -1,70 +1,106 @@
 [
     {
-        "merged": "com.memori.app-debug-71:/mipmap-xxhdpi_ic_launcher.webp.flat",
-        "source": "com.memori.app-main-73:/mipmap-xxhdpi/ic_launcher.webp"
+        "merged": "C:\\Users\\Usuário\\.gradle\\daemon\\8.7\\com.memori.app-debug-71:\\mipmap-xxhdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\Usuário\\.gradle\\daemon\\8.7\\com.memori.app-main-73:\\mipmap-xxhdpi\\ic_launcher_round.webp"
     },
     {
-        "merged": "com.memori.app-debug-71:/drawable_kkkk_puzzle.jpg.flat",
-        "source": "com.memori.app-main-73:/drawable/kkkk_puzzle.jpg"
+        "merged": "C:\\Users\\Usuário\\.gradle\\daemon\\8.7\\com.memori.app-debug-71:\\mipmap-anydpi-v26_ic_launcher_memori.xml.flat",
+        "source": "C:\\Users\\Usuário\\.gradle\\daemon\\8.7\\com.memori.app-main-73:\\mipmap-anydpi-v26\\ic_launcher_memori.xml"
     },
     {
-        "merged": "com.memori.app-debug-71:/mipmap-xxxhdpi_ic_launcher.webp.flat",
-        "source": "com.memori.app-main-73:/mipmap-xxxhdpi/ic_launcher.webp"
+        "merged": "C:\\Users\\Usuário\\.gradle\\daemon\\8.7\\com.memori.app-debug-71:\\xml_backup_rules.xml.flat",
+        "source": "C:\\Users\\Usuário\\.gradle\\daemon\\8.7\\com.memori.app-main-73:\\xml\\backup_rules.xml"
     },
     {
-        "merged": "com.memori.app-debug-71:/drawable_ic_launcher_foreground.xml.flat",
-        "source": "com.memori.app-main-73:/drawable/ic_launcher_foreground.xml"
+        "merged": "C:\\Users\\Usuário\\.gradle\\daemon\\8.7\\com.memori.app-debug-71:\\mipmap-hdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\Usuário\\.gradle\\daemon\\8.7\\com.memori.app-main-73:\\mipmap-hdpi\\ic_launcher.webp"
     },
     {
-        "merged": "com.memori.app-debug-71:/drawable_ic_launcher_background.xml.flat",
-        "source": "com.memori.app-main-73:/drawable/ic_launcher_background.xml"
+        "merged": "C:\\Users\\Usuário\\.gradle\\daemon\\8.7\\com.memori.app-debug-71:\\mipmap-xxhdpi_ic_launcher_foreground.webp.flat",
+        "source": "C:\\Users\\Usuário\\.gradle\\daemon\\8.7\\com.memori.app-main-73:\\mipmap-xxhdpi\\ic_launcher_foreground.webp"
     },
     {
-        "merged": "com.memori.app-debug-71:/mipmap-anydpi-v26_ic_launcher_round.xml.flat",
-        "source": "com.memori.app-main-73:/mipmap-anydpi-v26/ic_launcher_round.xml"
+        "merged": "C:\\Users\\Usuário\\.gradle\\daemon\\8.7\\com.memori.app-debug-71:\\mipmap-xxxhdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\Usuário\\.gradle\\daemon\\8.7\\com.memori.app-main-73:\\mipmap-xxxhdpi\\ic_launcher_round.webp"
     },
     {
-        "merged": "com.memori.app-debug-71:/mipmap-hdpi_ic_launcher_round.webp.flat",
-        "source": "com.memori.app-main-73:/mipmap-hdpi/ic_launcher_round.webp"
+        "merged": "C:\\Users\\Usuário\\.gradle\\daemon\\8.7\\com.memori.app-debug-71:\\xml_data_extraction_rules.xml.flat",
+        "source": "C:\\Users\\Usuário\\.gradle\\daemon\\8.7\\com.memori.app-main-73:\\xml\\data_extraction_rules.xml"
     },
     {
-        "merged": "com.memori.app-debug-71:/mipmap-hdpi_ic_launcher.webp.flat",
-        "source": "com.memori.app-main-73:/mipmap-hdpi/ic_launcher.webp"
+        "merged": "C:\\Users\\Usuário\\.gradle\\daemon\\8.7\\com.memori.app-debug-71:\\mipmap-xxxhdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\Usuário\\.gradle\\daemon\\8.7\\com.memori.app-main-73:\\mipmap-xxxhdpi\\ic_launcher.webp"
     },
     {
-        "merged": "com.memori.app-debug-71:/mipmap-xxhdpi_ic_launcher_round.webp.flat",
-        "source": "com.memori.app-main-73:/mipmap-xxhdpi/ic_launcher_round.webp"
+        "merged": "C:\\Users\\Usuário\\.gradle\\daemon\\8.7\\com.memori.app-debug-71:\\mipmap-anydpi-v26_ic_launcher_memori_round.xml.flat",
+        "source": "C:\\Users\\Usuário\\.gradle\\daemon\\8.7\\com.memori.app-main-73:\\mipmap-anydpi-v26\\ic_launcher_memori_round.xml"
     },
     {
-        "merged": "com.memori.app-debug-71:/mipmap-xhdpi_ic_launcher_round.webp.flat",
-        "source": "com.memori.app-main-73:/mipmap-xhdpi/ic_launcher_round.webp"
+        "merged": "com.memori.app-debug-71:/drawable_guaracui.png.flat",
+        "source": "com.memori.app-main-73:/drawable/guaracui.png"
     },
     {
-        "merged": "com.memori.app-debug-71:/xml_data_extraction_rules.xml.flat",
-        "source": "com.memori.app-main-73:/xml/data_extraction_rules.xml"
+        "merged": "C:\\Users\\Usuário\\.gradle\\daemon\\8.7\\com.memori.app-debug-71:\\mipmap-xhdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\Usuário\\.gradle\\daemon\\8.7\\com.memori.app-main-73:\\mipmap-xhdpi\\ic_launcher_round.webp"
     },
     {
-        "merged": "com.memori.app-debug-71:/mipmap-anydpi-v26_ic_launcher.xml.flat",
-        "source": "com.memori.app-main-73:/mipmap-anydpi-v26/ic_launcher.xml"
+        "merged": "C:\\Users\\Usuário\\.gradle\\daemon\\8.7\\com.memori.app-debug-71:\\drawable_ic_launcher_background.xml.flat",
+        "source": "C:\\Users\\Usuário\\.gradle\\daemon\\8.7\\com.memori.app-main-73:\\drawable\\ic_launcher_background.xml"
     },
     {
-        "merged": "com.memori.app-debug-71:/mipmap-xhdpi_ic_launcher.webp.flat",
-        "source": "com.memori.app-main-73:/mipmap-xhdpi/ic_launcher.webp"
+        "merged": "C:\\Users\\Usuário\\.gradle\\daemon\\8.7\\com.memori.app-debug-71:\\drawable_ic_launcher_foreground.xml.flat",
+        "source": "C:\\Users\\Usuário\\.gradle\\daemon\\8.7\\com.memori.app-main-73:\\drawable\\ic_launcher_foreground.xml"
     },
     {
-        "merged": "com.memori.app-debug-71:/mipmap-mdpi_ic_launcher_round.webp.flat",
-        "source": "com.memori.app-main-73:/mipmap-mdpi/ic_launcher_round.webp"
+        "merged": "C:\\Users\\Usuário\\.gradle\\daemon\\8.7\\com.memori.app-debug-71:\\mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "C:\\Users\\Usuário\\.gradle\\daemon\\8.7\\com.memori.app-main-73:\\mipmap-anydpi-v26\\ic_launcher.xml"
     },
     {
-        "merged": "com.memori.app-debug-71:/mipmap-mdpi_ic_launcher.webp.flat",
-        "source": "com.memori.app-main-73:/mipmap-mdpi/ic_launcher.webp"
+        "merged": "C:\\Users\\Usuário\\.gradle\\daemon\\8.7\\com.memori.app-debug-71:\\drawable_kkkk_puzzle.jpg.flat",
+        "source": "C:\\Users\\Usuário\\.gradle\\daemon\\8.7\\com.memori.app-main-73:\\drawable\\kkkk_puzzle.jpg"
     },
     {
-        "merged": "com.memori.app-debug-71:/mipmap-xxxhdpi_ic_launcher_round.webp.flat",
-        "source": "com.memori.app-main-73:/mipmap-xxxhdpi/ic_launcher_round.webp"
+        "merged": "C:\\Users\\Usuário\\.gradle\\daemon\\8.7\\com.memori.app-debug-71:\\mipmap-hdpi_ic_launcher_foreground.webp.flat",
+        "source": "C:\\Users\\Usuário\\.gradle\\daemon\\8.7\\com.memori.app-main-73:\\mipmap-hdpi\\ic_launcher_foreground.webp"
     },
     {
-        "merged": "com.memori.app-debug-71:/xml_backup_rules.xml.flat",
-        "source": "com.memori.app-main-73:/xml/backup_rules.xml"
+        "merged": "C:\\Users\\Usuário\\.gradle\\daemon\\8.7\\com.memori.app-debug-71:\\drawable_guaracui.png.flat",
+        "source": "C:\\Users\\Usuário\\.gradle\\daemon\\8.7\\com.memori.app-main-73:\\drawable\\guaracui.png"
+    },
+    {
+        "merged": "C:\\Users\\Usuário\\.gradle\\daemon\\8.7\\com.memori.app-debug-71:\\mipmap-xhdpi_ic_launcher_foreground.webp.flat",
+        "source": "C:\\Users\\Usuário\\.gradle\\daemon\\8.7\\com.memori.app-main-73:\\mipmap-xhdpi\\ic_launcher_foreground.webp"
+    },
+    {
+        "merged": "C:\\Users\\Usuário\\.gradle\\daemon\\8.7\\com.memori.app-debug-71:\\mipmap-mdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\Usuário\\.gradle\\daemon\\8.7\\com.memori.app-main-73:\\mipmap-mdpi\\ic_launcher_round.webp"
+    },
+    {
+        "merged": "C:\\Users\\Usuário\\.gradle\\daemon\\8.7\\com.memori.app-debug-71:\\mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "C:\\Users\\Usuário\\.gradle\\daemon\\8.7\\com.memori.app-main-73:\\mipmap-anydpi-v26\\ic_launcher_round.xml"
+    },
+    {
+        "merged": "C:\\Users\\Usuário\\.gradle\\daemon\\8.7\\com.memori.app-debug-71:\\mipmap-xxxhdpi_ic_launcher_foreground.webp.flat",
+        "source": "C:\\Users\\Usuário\\.gradle\\daemon\\8.7\\com.memori.app-main-73:\\mipmap-xxxhdpi\\ic_launcher_foreground.webp"
+    },
+    {
+        "merged": "C:\\Users\\Usuário\\.gradle\\daemon\\8.7\\com.memori.app-debug-71:\\mipmap-xhdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\Usuário\\.gradle\\daemon\\8.7\\com.memori.app-main-73:\\mipmap-xhdpi\\ic_launcher.webp"
+    },
+    {
+        "merged": "C:\\Users\\Usuário\\.gradle\\daemon\\8.7\\com.memori.app-debug-71:\\mipmap-hdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\Usuário\\.gradle\\daemon\\8.7\\com.memori.app-main-73:\\mipmap-hdpi\\ic_launcher_round.webp"
+    },
+    {
+        "merged": "C:\\Users\\Usuário\\.gradle\\daemon\\8.7\\com.memori.app-debug-71:\\mipmap-mdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\Usuário\\.gradle\\daemon\\8.7\\com.memori.app-main-73:\\mipmap-mdpi\\ic_launcher.webp"
+    },
+    {
+        "merged": "C:\\Users\\Usuário\\.gradle\\daemon\\8.7\\com.memori.app-debug-71:\\mipmap-mdpi_ic_launcher_foreground.webp.flat",
+        "source": "C:\\Users\\Usuário\\.gradle\\daemon\\8.7\\com.memori.app-main-73:\\mipmap-mdpi\\ic_launcher_foreground.webp"
+    },
+    {
+        "merged": "C:\\Users\\Usuário\\.gradle\\daemon\\8.7\\com.memori.app-debug-71:\\mipmap-xxhdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\Usuário\\.gradle\\daemon\\8.7\\com.memori.app-main-73:\\mipmap-xxhdpi\\ic_launcher.webp"
     }
 ]
