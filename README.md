@@ -5,7 +5,7 @@
 </p>
 
 Este projeto em Kotlin atende ao usuário final e compõe o ecossistema Memori junto ao CMS de Administração, responsável pelo gerenciamento do conteúdo.
-Link do CMS: 
+Link do CMS: https://github.com/AnandaMazine/memori-pi-1-2026
 
 ## Ferramentas
 
