@@ -4,6 +4,9 @@
 <img src="https://github.com/larissatoyohashi/memori/blob/main/memori/public/imgs/Banner.png" width="90%">
 </p>
 
+Este projeto em Kotlin atende ao usuário final e compõe o ecossistema Memori junto ao CMS de Administração, responsável pelo gerenciamento do conteúdo.
+Link do CMS: 
+
 ## Ferramentas
 
 Ferramentas utilizadas para o desenvolvimento do app:
