@@ -1,7 +1,7 @@
 # Memori
 
 <p align="center">
-<img src="https://github.com/samsesz/Memori-PI/blob/main/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png" width="20%">
+<img src="https://github.com/larissatoyohashi/memori/blob/main/memori/public/imgs/Banner.png" width="90%">
 </p>
 
 ## Ferramentas
