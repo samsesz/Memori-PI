@@ -57,7 +57,7 @@ fun HomeMapScreen(onNavigateToProfile: () -> Unit) {
         
         mapView.setTileSource(TileSourceFactory.MAPNIK)
         mapView.setMultiTouchControls(true)
-        mapView.setBuiltInZoomControls(false) // Remove os botões de zoom padrão que aparecem atrás do Iniciar Trilha
+        mapView.setBuiltInZoomControls(false) 
         mapView.controller.setZoom(18.0)
         mapView.controller.setCenter(kkkkLocation)
     }
@@ -101,15 +101,14 @@ fun HomeMapScreen(onNavigateToProfile: () -> Unit) {
                 marker.icon = ContextCompat.getDrawable(context, R.drawable.guaracui)
                 marker.setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_CENTER)
                 marker.setOnMarkerClickListener { _, _ ->
-                    // Marcador clicado
+                    
                     true
                 }
                 view.overlays.add(marker)
             }
         )
 
-        // O botão de origami foi removido conforme solicitado.
-        // O botão de "Iniciar Trilha" no MainScreen agora é o único ponto de entrada.
+
 
         // FAB: My Location - MOVED UP and Functional
         FloatingActionButton(
@@ -134,7 +133,7 @@ fun HomeMapScreen(onNavigateToProfile: () -> Unit) {
             },
             modifier = Modifier
                 .align(Alignment.TopEnd)
-                .padding(top = 80.dp, end = 16.dp), // Posição ajustada ainda mais para cima
+                .padding(top = 80.dp, end = 16.dp), 
             containerColor = Color.White,
             elevation = FloatingActionButtonDefaults.elevation(4.dp),
             shape = CircleShape
