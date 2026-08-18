@@ -291,6 +291,43 @@ fun PuzzleScreen(onPuzzleCompleted: (Int) -> Unit, onExit: () -> Unit) {
                 confirmButton = {
                     Button(onClick = {
                         showDialog = false
+
+                        CoroutineScope(Dispatchers.IO).launch {
+                            try {
+                                val userId = SessionManager.getUserId(context)
+                                val agora = java.time.Instant.now().toString()
+
+                                // Pontos: menos tempo = mais pontos (máx 1000)
+                                val pontos = maxOf(0, 1000 - timeElapsed)
+
+                                // 1. Salva a pontuação e recebe o id
+                                val pontuacaoResp = RetrofitClient.api.criarPontuacao(
+                                    CriarPontuacaoRequest(
+                                        idUsuario   = userId,
+                                        idDesafio   = "ID_DO_DESAFIO_PUZZLE", // ← coloca o _id do desafio puzzle no seu banco
+                                        dataInicio  = agora,
+                                        dataFim     = agora,
+                                        pontosTotal = pontos
+                                    )
+                                )
+
+                                // 2. Com o id da pontuação, salva no ranking
+                                if (pontuacaoResp.isSuccessful) {
+                                    val idPontuacao = pontuacaoResp.body()?.id ?: return@launch
+                                    RetrofitClient.api.criarRanking(
+                                        CriarRankingRequest(
+                                            idUsuario   = userId,
+                                            idPontuacao = idPontuacao,
+                                            pontosTotal = pontos,
+                                            posicao     = 0
+                                        )
+                                    )
+                                }
+                            } catch (e: Exception) {
+                                e.printStackTrace()
+                            }
+                        }
+
                         onPuzzleCompleted(timeElapsed)
                     }) {
                         Text("Continuar")

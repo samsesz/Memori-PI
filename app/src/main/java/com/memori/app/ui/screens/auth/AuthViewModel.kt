@@ -1,12 +1,12 @@
 package com.memori.app.ui.screens.auth
 
-import androidx.lifecycle.ViewModel
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
-// import com.google.firebase.auth.FirebaseAuth // Comentado para teste sem Firebase
-import kotlinx.coroutines.delay
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 sealed class AuthState {
     object Idle : AuthState()
@@ -15,64 +15,59 @@ sealed class AuthState {
     data class Error(val message: String) : AuthState()
 }
 
-class AuthViewModel : ViewModel() {
-    // private val auth: FirebaseAuth = FirebaseAuth.getInstance() // Comentado
-    
+class AuthViewModel(application: android.app.Application) : AndroidViewModel(application) {
+
+    private val _context = getApplication<android.app.Application>()
+
     private val _authState = MutableStateFlow<AuthState>(AuthState.Idle)
     val authState: StateFlow<AuthState> = _authState
 
     fun login(email: String, pass: String, onSuccess: () -> Unit) {
         viewModelScope.launch {
             _authState.value = AuthState.Loading
-            delay(1000) // Simula tempo de rede
-            
-            // Simulação de login (Qualquer senha com mais de 3 dígitos passa)
-            if (pass.length >= 3) {
-                _authState.value = AuthState.Success("Bem-vindo (Modo Teste)!")
-                onSuccess()
-            } else {
-                _authState.value = AuthState.Error("Senha muito curta para o teste!")
-            }
-            
-            /* CÓDIGO FIREBASE COMENTADO:
-            auth.signInWithEmailAndPassword(email, pass)
-                .addOnCompleteListener { task ->
-                    if (task.isSuccessful) {
-                        _authState.value = AuthState.Success("Bem-vindo!")
-                        onSuccess()
-                    } else {
-                        _authState.value = AuthState.Error(task.exception?.localizedMessage ?: "Erro ao entrar")
-                    }
+            try {
+                val response = withContext(Dispatchers.IO) {
+                    com.memori.app.data.remote.RetrofitClient.api.login(
+                        com.memori.app.data.remote.LoginRequest(email, pass)
+                    )
                 }
-            */
+
+                if (response.isSuccessful) {
+                    val token = response.body()!!.token
+
+                    val payload = token.split(".")[1]
+                    val decodedBytes = android.util.Base64.decode(payload, android.util.Base64.URL_SAFE)
+                    val userId = org.json.JSONObject(String(decodedBytes)).getString("id")
+
+                    com.memori.app.data.remote.SessionManager.salvarSessao(_context, userId, token)
+
+                    _authState.value = AuthState.Success("Bem-vindo!")
+                    onSuccess()
+
+                } else {
+                    val mensagem = when (response.code()) {
+                        401 -> "Email ou senha inválidos"
+                        404 -> "Usuário não encontrado"
+                        else -> "Erro ao fazer login"
+                    }
+                    _authState.value = AuthState.Error(mensagem)
+                }
+            } catch (e: Exception) {
+                _authState.value = AuthState.Error("Erro de conexão com o servidor")
+            }
         }
     }
 
     fun register(email: String, pass: String, name: String, onSuccess: () -> Unit) {
         viewModelScope.launch {
             _authState.value = AuthState.Loading
-            delay(1000) // Simula tempo de rede
-            
+            // TODO: implementar cadastro via API igual ao login
             _authState.value = AuthState.Success("Conta criada (Modo Teste)!")
             onSuccess()
-
-            /* CÓDIGO FIREBASE COMENTADO:
-            auth.createUserWithEmailAndPassword(email, pass)
-                .addOnCompleteListener { task ->
-                    if (task.isSuccessful) {
-                        _authState.value = AuthState.Success("Conta criada!")
-                        onSuccess()
-                    } else {
-                        _authState.value = AuthState.Error(task.exception?.localizedMessage ?: "Erro ao cadastrar")
-                    }
-                }
-            */
         }
     }
 
     fun resetState() {
         _authState.value = AuthState.Idle
     }
-    
-    // fun getCurrentUser() = auth.currentUser // Comentado
 }
