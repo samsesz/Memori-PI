@@ -5,6 +5,9 @@ drawable guaracui
 drawable ic_launcher_background
 drawable ic_launcher_foreground
 drawable kkkk_puzzle
+drawable logo_memori
+drawable yumi
+drawable yumi_boca
 mipmap ic_launcher
 mipmap ic_launcher_foreground
 mipmap ic_launcher_round

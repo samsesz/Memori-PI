@@ -27,7 +27,8 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.memori.app.R
-import kotlinx.coroutines.delay
+import com.memori.app.data.remote.*
+import kotlinx.coroutines.*
 import java.util.Collections
 
 // ---------------------------------------------------------------------------
@@ -295,7 +296,9 @@ fun PuzzleScreen(onPuzzleCompleted: (Int) -> Unit, onExit: () -> Unit) {
                         CoroutineScope(Dispatchers.IO).launch {
                             try {
                                 val userId = SessionManager.getUserId(context)
-                                val agora = java.time.Instant.now().toString()
+                                val agora = java.text.SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", java.util.Locale.US).apply {
+                                    timeZone = java.util.TimeZone.getTimeZone("UTC")
+                                }.format(java.util.Date())
 
                                 // Pontos: menos tempo = mais pontos (máx 1000)
                                 val pontos = maxOf(0, 1000 - timeElapsed)

@@ -1,18 +1,27 @@
 package com.memori.app.ui.navigation
 
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.memori.app.ui.screens.auth.SplashScreen
 import com.memori.app.ui.screens.auth.LoginScreen
 import com.memori.app.ui.screens.auth.RegisterScreen
+import com.memori.app.ui.screens.trail.StoryScreen
+import com.memori.app.ui.screens.trail.dialogosIntro
+import com.memori.app.ui.screens.trail.dialogosPostAR
 
 @Composable
 fun AppNavigation() {
     val navController = rememberNavController()
 
     NavHost(navController = navController, startDestination = Screen.Splash.route) {
+
         composable(Screen.Splash.route) {
             SplashScreen(onSplashFinished = {
                 navController.navigate(Screen.Login.route) {
@@ -20,6 +29,7 @@ fun AppNavigation() {
                 }
             })
         }
+
         composable(Screen.Login.route) {
             LoginScreen(
                 onNavigateToHome = {
@@ -32,6 +42,7 @@ fun AppNavigation() {
                 }
             )
         }
+
         composable(Screen.Cadastro.route) {
             RegisterScreen(
                 onNavigateToLogin = {
@@ -46,10 +57,11 @@ fun AppNavigation() {
                 }
             )
         }
+
         composable(Screen.HomeMap.route) {
             com.memori.app.ui.screens.home.MainScreen(
                 onNavigateToTrailStart = {
-                    navController.navigate(Screen.Splash.route + "_trail")
+                    navController.navigate("story_intro")
                 },
                 onLogout = {
                     navController.navigate(Screen.Login.route) {
@@ -58,20 +70,52 @@ fun AppNavigation() {
                 }
             )
         }
-        composable(Screen.Splash.route + "_trail") {
-            com.memori.app.ui.screens.trail.TrailStartScreen(
-                onStartAR = {
-                    navController.navigate(Screen.ARScanner.route)
-                }
-            )
+
+        composable("story_intro") {
+            Box(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .background(Color.Transparent)
+            ) {
+                com.memori.app.ui.screens.home.HomeMapScreen(
+                    onNavigateToProfile = {}
+                )
+                // Story por cima
+                StoryScreen(
+                    dialogos = dialogosIntro,
+                    onFinished = {
+                        navController.navigate(Screen.Splash.route + "_trail")
+                    }
+                )
+            }
         }
+
         composable(Screen.ARScanner.route) {
             com.memori.app.ui.screens.trail.ARScannerScreen(
                 onFinishedAR = {
-                    navController.navigate(Screen.Puzzle.route)
+                    navController.navigate("story_post_ar")
                 }
             )
         }
+
+        composable("story_post_ar") {
+            Box(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .background(Color.Transparent)
+            ) {
+                com.memori.app.ui.screens.home.HomeMapScreen(
+                    onNavigateToProfile = {}
+                )
+                StoryScreen(
+                    dialogos = dialogosPostAR,
+                    onFinished = {
+                        navController.navigate(Screen.Puzzle.route)
+                    }
+                )
+            }
+        }
+
         composable(Screen.Puzzle.route) {
             com.memori.app.ui.screens.trail.PuzzleScreen(
                 onPuzzleCompleted = { time ->
@@ -84,6 +128,7 @@ fun AppNavigation() {
                 }
             )
         }
+
         composable("final_story/{time}") { backStackEntry ->
             val time = backStackEntry.arguments?.getString("time")?.toIntOrNull() ?: 0
             com.memori.app.ui.screens.trail.FinalStoryScreen(
@@ -93,6 +138,7 @@ fun AppNavigation() {
                 }
             )
         }
+
         composable(Screen.Ranking.route) {
             com.memori.app.ui.screens.trail.RankingScreen(
                 onBackToHome = {
