@@ -4,16 +4,16 @@
         "source": "C:\\Users\\Usuário\\.gradle\\daemon\\8.7\\com.memori.app-main-73:\\mipmap-xxhdpi\\ic_launcher_round.webp"
     },
     {
-        "merged": "C:\\Users\\Usuário\\.gradle\\daemon\\8.7\\com.memori.app-debug-71:\\mipmap-anydpi-v26_ic_launcher_memori.xml.flat",
-        "source": "C:\\Users\\Usuário\\.gradle\\daemon\\8.7\\com.memori.app-main-73:\\mipmap-anydpi-v26\\ic_launcher_memori.xml"
-    },
-    {
         "merged": "C:\\Users\\Usuário\\.gradle\\daemon\\8.7\\com.memori.app-debug-71:\\xml_backup_rules.xml.flat",
         "source": "C:\\Users\\Usuário\\.gradle\\daemon\\8.7\\com.memori.app-main-73:\\xml\\backup_rules.xml"
     },
     {
         "merged": "C:\\Users\\Usuário\\.gradle\\daemon\\8.7\\com.memori.app-debug-71:\\mipmap-hdpi_ic_launcher.webp.flat",
         "source": "C:\\Users\\Usuário\\.gradle\\daemon\\8.7\\com.memori.app-main-73:\\mipmap-hdpi\\ic_launcher.webp"
+    },
+    {
+        "merged": "com.memori.app-debug-71:/drawable_yumi_boca.png.flat",
+        "source": "com.memori.app-main-73:/drawable/yumi_boca.png"
     },
     {
         "merged": "C:\\Users\\Usuário\\.gradle\\daemon\\8.7\\com.memori.app-debug-71:\\mipmap-xxhdpi_ic_launcher_foreground.webp.flat",
@@ -32,14 +32,6 @@
         "source": "C:\\Users\\Usuário\\.gradle\\daemon\\8.7\\com.memori.app-main-73:\\mipmap-xxxhdpi\\ic_launcher.webp"
     },
     {
-        "merged": "C:\\Users\\Usuário\\.gradle\\daemon\\8.7\\com.memori.app-debug-71:\\mipmap-anydpi-v26_ic_launcher_memori_round.xml.flat",
-        "source": "C:\\Users\\Usuário\\.gradle\\daemon\\8.7\\com.memori.app-main-73:\\mipmap-anydpi-v26\\ic_launcher_memori_round.xml"
-    },
-    {
-        "merged": "com.memori.app-debug-71:/drawable_guaracui.png.flat",
-        "source": "com.memori.app-main-73:/drawable/guaracui.png"
-    },
-    {
         "merged": "C:\\Users\\Usuário\\.gradle\\daemon\\8.7\\com.memori.app-debug-71:\\mipmap-xhdpi_ic_launcher_round.webp.flat",
         "source": "C:\\Users\\Usuário\\.gradle\\daemon\\8.7\\com.memori.app-main-73:\\mipmap-xhdpi\\ic_launcher_round.webp"
     },
@@ -50,6 +42,10 @@
     {
         "merged": "C:\\Users\\Usuário\\.gradle\\daemon\\8.7\\com.memori.app-debug-71:\\drawable_ic_launcher_foreground.xml.flat",
         "source": "C:\\Users\\Usuário\\.gradle\\daemon\\8.7\\com.memori.app-main-73:\\drawable\\ic_launcher_foreground.xml"
+    },
+    {
+        "merged": "com.memori.app-debug-71:/drawable_yumi.png.flat",
+        "source": "com.memori.app-main-73:/drawable/yumi.png"
     },
     {
         "merged": "C:\\Users\\Usuário\\.gradle\\daemon\\8.7\\com.memori.app-debug-71:\\mipmap-anydpi-v26_ic_launcher.xml.flat",
@@ -72,12 +68,20 @@
         "source": "C:\\Users\\Usuário\\.gradle\\daemon\\8.7\\com.memori.app-main-73:\\mipmap-xhdpi\\ic_launcher_foreground.webp"
     },
     {
+        "merged": "C:\\Users\\Usuário\\.gradle\\daemon\\8.7\\com.memori.app-debug-71:\\drawable_yumi_boca_aberta.png.flat",
+        "source": "C:\\Users\\Usuário\\.gradle\\daemon\\8.7\\com.memori.app-main-73:\\drawable\\yumi_boca_aberta.png"
+    },
+    {
         "merged": "C:\\Users\\Usuário\\.gradle\\daemon\\8.7\\com.memori.app-debug-71:\\mipmap-mdpi_ic_launcher_round.webp.flat",
         "source": "C:\\Users\\Usuário\\.gradle\\daemon\\8.7\\com.memori.app-main-73:\\mipmap-mdpi\\ic_launcher_round.webp"
     },
     {
         "merged": "C:\\Users\\Usuário\\.gradle\\daemon\\8.7\\com.memori.app-debug-71:\\mipmap-anydpi-v26_ic_launcher_round.xml.flat",
         "source": "C:\\Users\\Usuário\\.gradle\\daemon\\8.7\\com.memori.app-main-73:\\mipmap-anydpi-v26\\ic_launcher_round.xml"
+    },
+    {
+        "merged": "C:\\Users\\Usuário\\.gradle\\daemon\\8.7\\com.memori.app-debug-71:\\drawable_logo_memori.png.flat",
+        "source": "C:\\Users\\Usuário\\.gradle\\daemon\\8.7\\com.memori.app-main-73:\\drawable\\logo_memori.png"
     },
     {
         "merged": "C:\\Users\\Usuário\\.gradle\\daemon\\8.7\\com.memori.app-debug-71:\\mipmap-xxxhdpi_ic_launcher_foreground.webp.flat",
@@ -102,5 +106,9 @@
     {
         "merged": "C:\\Users\\Usuário\\.gradle\\daemon\\8.7\\com.memori.app-debug-71:\\mipmap-xxhdpi_ic_launcher.webp.flat",
         "source": "C:\\Users\\Usuário\\.gradle\\daemon\\8.7\\com.memori.app-main-73:\\mipmap-xxhdpi\\ic_launcher.webp"
+    },
+    {
+        "merged": "C:\\Users\\Usuário\\.gradle\\daemon\\8.7\\com.memori.app-debug-71:\\drawable_yumi_bocafechada.png.flat",
+        "source": "C:\\Users\\Usuário\\.gradle\\daemon\\8.7\\com.memori.app-main-73:\\drawable\\yumi_bocafechada.png"
     }
 ]

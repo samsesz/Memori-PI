@@ -12,36 +12,47 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Star
 import androidx.compose.material.icons.filled.TrendingUp
 import androidx.compose.material3.*
-import androidx.compose.runtime.Composable
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.memori.app.data.remote.RankingItem
+import com.memori.app.data.remote.RetrofitClient
+import com.memori.app.data.remote.SessionManager
 import com.memori.app.ui.theme.RedPrimary
-
-data class RankingUser(
-    val name: String,
-    val time: String,
-    val emoji: String,
-    val color: Color
-)
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 
 @Composable
 fun RankingScreen(onBackToHome: () -> Unit) {
-    val mockUsers = listOf(
-        RankingUser("Larissa (Você)", "00:28:15 h", "😊", Color(0xFFFFD54F)),
-        RankingUser("PRIMEIRO LUGAR", "00:25:40 h", "👑", Color(0xFFFF5252)),
-        RankingUser("Mateus", "00:30:40 h", "🟡", Color(0xFFFFD54F)),
-        RankingUser("Beatriz", "00:32:12 h", "🔵", Color(0xFF64B5F6)),
-        RankingUser("Rodrigo", "00:35:05 h", "🟢", Color(0xFF81C784)),
-        RankingUser("Ana", "00:40:00 h", "🟣", Color(0xFFBA68C8))
-    )
+    val context = LocalContext.current
+    var rankingList by remember { mutableStateOf<List<RankingItem>>(emptyList()) }
+    var carregando by remember { mutableStateOf(true) }
+    var erro by remember { mutableStateOf("") }
+
+    LaunchedEffect(Unit) {
+        SessionManager.carregarToken(context)
+        try {
+            val response = withContext(Dispatchers.IO) {
+                RetrofitClient.api.getRanking()
+            }
+            if (response.isSuccessful) {
+                rankingList = response.body()?.ranking ?: emptyList()
+            } else {
+                erro = "Erro ao carregar ranking"
+            }
+        } catch (e: Exception) {
+            erro = "Erro de conexão"
+        }
+        carregando = false
+    }
 
     Box(modifier = Modifier.fillMaxSize().background(Color(0xFFF5F5F5))) {
-        // Background Map (Simulado)
         Box(modifier = Modifier.fillMaxSize().background(Color.Gray.copy(alpha = 0.1f)))
 
         Card(
@@ -58,6 +69,7 @@ fun RankingScreen(onBackToHome: () -> Unit) {
                 modifier = Modifier.padding(24.dp),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
+                // Header — mostra o primeiro colocado
                 Row(
                     modifier = Modifier.fillMaxWidth(),
                     horizontalArrangement = Arrangement.SpaceBetween,
@@ -65,14 +77,28 @@ fun RankingScreen(onBackToHome: () -> Unit) {
                 ) {
                     Column {
                         Text("Ranking", fontSize = 24.sp, color = Color.Gray)
-                        Text("#01 ${mockUsers[1].name}", color = RedPrimary, fontWeight = FontWeight.Bold, fontSize = 20.sp)
-                        Text(mockUsers[1].time, color = Color.Gray, fontSize = 14.sp)
+                        if (rankingList.isNotEmpty()) {
+                            Text(
+                                "#01 ${rankingList[0].idUsuario.nomeUsuario}",
+                                color = RedPrimary,
+                                fontWeight = FontWeight.Bold,
+                                fontSize = 20.sp
+                            )
+                            Text(
+                                "${rankingList[0].pontosTotal} pts",
+                                color = Color.Gray,
+                                fontSize = 14.sp
+                            )
+                        }
                     }
                     Surface(
                         color = Color(0xFFC5E1A5),
                         shape = RoundedCornerShape(8.dp)
                     ) {
-                        Column(modifier = Modifier.padding(8.dp), horizontalAlignment = Alignment.CenterHorizontally) {
+                        Column(
+                            modifier = Modifier.padding(8.dp),
+                            horizontalAlignment = Alignment.CenterHorizontally
+                        ) {
                             Icon(Icons.Default.TrendingUp, null, tint = Color(0xFF689F38), modifier = Modifier.size(20.dp))
                             Icon(Icons.Default.Star, null, tint = Color(0xFF689F38), modifier = Modifier.size(16.dp))
                         }
@@ -81,7 +107,7 @@ fun RankingScreen(onBackToHome: () -> Unit) {
 
                 Spacer(modifier = Modifier.height(24.dp))
 
-                // Crown and Top User Avatar
+                // Avatar do primeiro colocado
                 Box(contentAlignment = Alignment.Center) {
                     Text("👑", modifier = Modifier.offset(y = (-55).dp), fontSize = 40.sp)
                     Box(
@@ -91,35 +117,61 @@ fun RankingScreen(onBackToHome: () -> Unit) {
                             .padding(8.dp)
                     ) {
                         Box(
-                            modifier = Modifier.fillMaxSize().background(mockUsers[0].color, CircleShape),
+                            modifier = Modifier
+                                .fillMaxSize()
+                                .background(Color(0xFFFFD54F), CircleShape),
                             contentAlignment = Alignment.Center
                         ) {
-                            Text(mockUsers[0].emoji, fontSize = 40.sp)
+                            Text("🏆", fontSize = 40.sp)
                         }
                     }
                 }
 
                 Text(
-                    text = mockUsers[0].name,
+                    text = if (rankingList.isNotEmpty()) rankingList[0].idUsuario.nomeUsuario else "",
                     modifier = Modifier.padding(vertical = 12.dp),
                     fontSize = 22.sp,
                     color = Color.Gray,
                     fontWeight = FontWeight.Bold
                 )
 
-                Divider(modifier = Modifier.fillMaxWidth(0.7f).padding(bottom = 16.dp), color = Color.LightGray)
+                Divider(
+                    modifier = Modifier.fillMaxWidth(0.7f).padding(bottom = 16.dp),
+                    color = Color.LightGray
+                )
 
-                LazyColumn(
-                    modifier = Modifier.weight(1f),
-                    verticalArrangement = Arrangement.spacedBy(12.dp)
-                ) {
-                    itemsIndexed(mockUsers.drop(1)) { index, user ->
-                        RankingItem(index + 2, user)
+                // Lista de ranking
+                when {
+                    carregando -> {
+                        Box(modifier = Modifier.weight(1f), contentAlignment = Alignment.Center) {
+                            CircularProgressIndicator(color = RedPrimary)
+                        }
+                    }
+                    erro.isNotEmpty() -> {
+                        Box(modifier = Modifier.weight(1f), contentAlignment = Alignment.Center) {
+                            Text(erro, color = Color.Gray)
+                        }
+                    }
+                    rankingList.isEmpty() -> {
+                        Box(modifier = Modifier.weight(1f), contentAlignment = Alignment.Center) {
+                            Text("Nenhum resultado ainda", color = Color.Gray)
+                        }
+                    }
+                    else -> {
+                        LazyColumn(
+                            modifier = Modifier.weight(1f),
+                            verticalArrangement = Arrangement.spacedBy(12.dp)
+                        ) {
+                            // Pula o primeiro (já aparece no topo)
+                            itemsIndexed(rankingList.drop(1)) { index, item ->
+                                RankingItemRow(rank = index + 2, item = item)
+                            }
+                        }
                     }
                 }
 
                 Spacer(modifier = Modifier.height(16.dp))
-                
+
                 Button(
                     onClick = onBackToHome,
                     modifier = Modifier.fillMaxWidth().height(56.dp),
@@ -134,7 +186,15 @@ fun RankingScreen(onBackToHome: () -> Unit) {
 }
 
 @Composable
-fun RankingItem(rank: Int, user: RankingUser) {
+fun RankingItemRow(rank: Int, item: RankingItem) {
+    val emojis = listOf("🥈", "🥉", "🎖️", "⭐", "✨")
+    val cores = listOf(
+        Color(0xFF90CAF9), Color(0xFFFFCC80), Color(0xFFA5D6A7),
+        Color(0xFFCE93D8), Color(0xFFEF9A9A)
+    )
+    val emoji = emojis.getOrElse(rank - 2) { "🎮" }
+    val cor = cores.getOrElse(rank - 2) { Color(0xFFEEEEEE) }
+
     Row(
         modifier = Modifier.fillMaxWidth(),
         verticalAlignment = Alignment.CenterVertically
@@ -146,22 +206,22 @@ fun RankingItem(rank: Int, user: RankingUser) {
                 .padding(4.dp)
         ) {
             Box(
-                modifier = Modifier.fillMaxSize().background(user.color, CircleShape),
+                modifier = Modifier.fillMaxSize().background(cor, CircleShape),
                 contentAlignment = Alignment.Center
             ) {
-                Text(user.emoji, fontSize = 20.sp)
+                Text(emoji, fontSize = 20.sp)
             }
         }
-        
+
         Spacer(modifier = Modifier.width(12.dp))
-        
+
         Column(modifier = Modifier.weight(1f)) {
-            Text("#0$rank", color = RedPrimary, fontWeight = FontWeight.Bold)
+            Text("#${rank.toString().padStart(2, '0')}", color = RedPrimary, fontWeight = FontWeight.Bold)
             Row(
                 modifier = Modifier.fillMaxWidth(),
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                Text(user.name, color = Color.Gray, fontSize = 14.sp)
+                Text(item.idUsuario.nomeUsuario, color = Color.Gray, fontSize = 14.sp)
                 Text(
                     ".".repeat(20),
                     color = Color.LightGray,
@@ -169,7 +229,7 @@ fun RankingItem(rank: Int, user: RankingUser) {
                     modifier = Modifier.weight(1f).padding(horizontal = 4.dp),
                     maxLines = 1
                 )
-                Text(user.time, color = Color.Gray, fontSize = 14.sp)
+                Text("${item.pontosTotal} pts", color = Color.Gray, fontSize = 14.sp)
             }
             Divider(modifier = Modifier.padding(top = 4.dp), color = Color.LightGray, thickness = 0.5.dp)
         }

@@ -37,8 +37,7 @@ fun MainScreen(onNavigateToTrailStart: () -> Unit, onLogout: () -> Unit) {
     val bottomNavController = rememberNavController()
     var selectedItem by remember { mutableIntStateOf(0) }
     var showTrailDialog by remember { mutableStateOf(false) }
-    
-    // Menu ajustado para coincidir com a imagem
+
     val items = listOf("Explorar", "Perfil", "Conquistas")
     val icons = listOf(Icons.Default.CompassCalibration, Icons.Default.Person, Icons.Default.Image)
     val routes = listOf("map", "profile", "achievements")
@@ -46,17 +45,15 @@ fun MainScreen(onNavigateToTrailStart: () -> Unit, onLogout: () -> Unit) {
     Box(modifier = Modifier.fillMaxSize()) {
         Scaffold(
             bottomBar = {
-                // Menu "Cilíndrico" (Cápsula) flutuante conforme a foto
                 Box(
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(horizontal = 32.dp, vertical = 24.dp),
                     contentAlignment = Alignment.BottomCenter
                 ) {
-                    // Botão "INICIAR TRILHA" acima dos botões principais
                     Surface(
                         modifier = Modifier
-                            .offset(y = (-90).dp) // Posicionado acima da barra
+                            .offset(y = (-90).dp)
                             .size(70.dp)
                             .clickable { showTrailDialog = true },
                         shape = CircleShape,
@@ -65,7 +62,7 @@ fun MainScreen(onNavigateToTrailStart: () -> Unit, onLogout: () -> Unit) {
                         border = BorderStroke(3.dp, RedPrimary)
                     ) {
                         Box(contentAlignment = Alignment.Center) {
-                            Text("🚩", fontSize = 32.sp) // Emoji de Iniciar Trilha
+                            Text("🚩", fontSize = 32.sp)
                         }
                     }
 
@@ -91,7 +88,6 @@ fun MainScreen(onNavigateToTrailStart: () -> Unit, onLogout: () -> Unit) {
                                         .clip(CircleShape)
                                         .let { 
                                             if (index == 1 && isSelected) {
-                                                // Destaque do perfil no meio
                                                 it.border(2.dp, RedPrimary, CircleShape).padding(4.dp)
                                             } else it
                                         },
@@ -105,7 +101,6 @@ fun MainScreen(onNavigateToTrailStart: () -> Unit, onLogout: () -> Unit) {
                                         }
                                     }) {
                                         if (index == 1) {
-                                            // Ícone de perfil amarelado como na foto
                                             Box(
                                                 modifier = Modifier
                                                     .size(40.dp)
@@ -241,9 +236,9 @@ fun MainScreen(onNavigateToTrailStart: () -> Unit, onLogout: () -> Unit) {
                         Spacer(modifier = Modifier.height(24.dp))
                         Button(
                             onClick = {
-                                showTrailDialog = false
-                                onNavigateToTrailStart()
-                            },
+                            showTrailDialog = false
+                                onNavigateToTrailStart() // ← novo parâmetro na função
+                        },
                             modifier = Modifier.fillMaxWidth(0.8f).height(56.dp),
                             colors = ButtonDefaults.buttonColors(containerColor = RedPrimary),
                             shape = RoundedCornerShape(28.dp)
